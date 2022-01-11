@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import MovieSuggestion from './movie-suggestion'
 
 ReactDOM.render(
-  <h1>Hello World React!</h1>,
+  <MovieSuggestion />,
   document.getElementById('root'),
 )
