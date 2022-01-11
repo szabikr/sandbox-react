@@ -1,6 +1,7 @@
-import { Component } from './component'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-window.addEventListener('load', () => {
-  console.log('window loaded')
-  Component()
-})
+ReactDOM.render(
+  <h1>Hello World React!</h1>,
+  document.getElementById('root'),
+)
