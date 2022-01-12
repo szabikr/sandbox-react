@@ -24,14 +24,17 @@ export default function App() {
     doEffect()
   }, [])
 
-  // manage state
+  function handleCommentSubmit(name, content) {
+    console.log('name is', name)
+    console.log('content is', content)
+  }
 
   return (
     <>
       <Header title={post.title} date={post.date} />
       <Content content={post.content} />
       <Comments comments={comments} />
-      <CommentForm />
+      <CommentForm onSubmit={handleCommentSubmit} />
     </>
   )
 }
