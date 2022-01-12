@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Content() {
+export default function Content({ content }) {
   return (
     <div>
-      Blog post content
+      {content}
     </div>
   )
 }

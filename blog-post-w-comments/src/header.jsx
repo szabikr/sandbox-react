@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({ title, date }) {
   return (
     <header>
-      <h1>Blog Post with Comments</h1>
-      <p>2022 January</p>
+      <h1>{title}</h1>
+      <p>{date}</p>
     </header>
   )
 }

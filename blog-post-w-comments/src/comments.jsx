@@ -1,21 +1,18 @@
 import React from 'react'
 
-export default function Comments() {
+export default function Comments({ comments }) {
   return (
     <div>
       <p>Comments</p>
       <div>
         <ul>
-          <li>
-            Name: John Smith <br />
-            Content: This is a comment <br />
-            Date: 2022 Jan
-          </li>
-          <li>
-            Name: Jane Doe <br />
-            Content: This is another comment <br />
-            Date: 2022 Jan
-          </li>
+          {comments.map(comment => (
+            <li>
+              Name: {comment.name} <br />
+              Content: {comment.content} <br />
+              Date: {comment.date}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
