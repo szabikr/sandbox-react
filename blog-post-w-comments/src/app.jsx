@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Header from './header'
 import Content from './content'
@@ -8,13 +8,19 @@ import CommentForm from './comment-form'
 import { fetchBlogPostData } from './services'
 
 export default function App() {
-  // setup state
+  const [post, setPost] = useState({})
+  const [comments, setComments] = useState([])
   
   useEffect(() => {
     async function doEffect() {
       const response = await fetchBlogPostData()
-        console.log('Response is', response)
-      }
+      setPost({
+        title: response.title,
+        content: response.content,
+        date: response.date,
+      });
+      setComments(response.comments)
+    }
     doEffect()
   }, [])
 
@@ -22,9 +28,9 @@ export default function App() {
 
   return (
     <>
-      <Header />
-      <Content />
-      <Comments />
+      <Header title={post.title} date={post.date} />
+      <Content content={post.content} />
+      <Comments comments={comments} />
       <CommentForm />
     </>
   )
