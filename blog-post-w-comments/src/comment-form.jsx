@@ -2,16 +2,16 @@ import React from 'react'
 
 export default function CommentForm() {
   return (
-    <div>
+    <form>
       <div>
-        <label for="name-field">Name</label>
+        <label htmlFor="name-field">Name</label>
         <input id="name-field" type="text" />
       </div>
       <div>
-        <label for="content-field">Comment</label>
+        <label htmlFor="content-field">Comment</label>
         <textarea id="content-field" />
       </div>
-      <button>Submit</button>
-    </div>
+      <button type="submit">Submit</button>
+    </form>
   )
 }
