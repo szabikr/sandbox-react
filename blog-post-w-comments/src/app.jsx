@@ -13,20 +13,23 @@ export default function App() {
   
   useEffect(() => {
     async function doEffect() {
-      const response = await fetchBlogPostData()
-      setPost({
-        title: response.title,
-        content: response.content,
-        date: response.date,
-      });
-      setComments(response.comments)
+      try {
+        const response = await fetchBlogPostData()
+        setPost({
+          title: response.title,
+          content: response.content,
+          date: response.date,
+        });
+        setComments(response.comments)
+      } catch (error) {
+        console.log('Fetching data errors:', error)
+      }
     }
     doEffect()
   }, [])
 
   function handleCommentSubmit(name, content) {
-    console.log('name is', name)
-    console.log('content is', content)
+    setComments([...comments, {name, content, date: new Date().toString()}])
   }
 
   return (
