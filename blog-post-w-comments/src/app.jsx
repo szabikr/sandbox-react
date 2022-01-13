@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import styles from './styles/app.module.css'
 import Header from './header'
 import Content from './content'
 import Comments from './comments'
@@ -33,11 +34,11 @@ export default function App() {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <Header title={post.title} date={post.date} />
       <Content content={post.content} />
       <Comments comments={comments} />
       <CommentForm onSubmit={handleCommentSubmit} />
-    </>
+    </div>
   )
 }
