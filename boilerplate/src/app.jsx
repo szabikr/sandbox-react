@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className={styles.container}>
       <h1>React Boilerplate</h1>
-      <div class={styles.subtitle}>a <strong>szabi.space</strong> development</div>
+      <div className={styles.subtitle}>a <strong>szabi.space</strong> development</div>
     </div>
   )
 }
