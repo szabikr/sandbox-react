@@ -25,7 +25,7 @@ export default function Game() {
 
   const jumpTo = (step) => {
     setStepNumber(step);
-    setIsXNext(step % 2 == 0);
+    setIsXNext(step % 2 === 0);
   }
 
   const current = history[stepNumber];
