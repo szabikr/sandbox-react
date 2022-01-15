@@ -7,7 +7,7 @@
   "author": "szabikr",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "cp -r public build && webpack",
     "dev": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
