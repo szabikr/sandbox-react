@@ -241,3 +241,62 @@ module.exports = {
 };
 
 ```
+
+## Prepare for Deployment
+
+So far we have created a development environment and made use of the hot module replacement so that we can implement features quickly. Once we have all the desired functionality developed for our website, we need to bundle up our modules and build static files (html, js, css) that can be deployed to a hosting service such as Netlify or Vercel.
+
+We already specified in `webpack.config.js` (the `output` property) that the `build` folder will have all our build files now we just need to setup a `build` script in `package.json` and extand the `webpack.config.js` to support this.
+
+Add `build` script to `package.json`
+```
+{
+  ...
+  scripts: {
+    "build": "webpack",
+    ...
+  },
+  ...
+}
+
+```
+
+### Install and configure HtmlWebpackPlugin
+
+This plugin will take our `public/index.html` as a template and add the `bundle.js` script tag to its `<head>` so now we can remove the script tag from `public/index.html`
+
+Lines to remove in `public/index.html`:
+```
+<!--
+  To start with we include the script tag here
+  but once the HtmlWebpackPlugin is configured we can get rid of it
+-->
+<script src="bundle.js"></script>
+
+```
+
+`$ npm install --save-dev html-webpack-plugin`
+
+Extend `webpack.config.js` with HtmlWebpackPlugin
+```
+...
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+  ...
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true, // tells the plugin to inject the index.html to `build` folder
+      template: 'public/index.html', // path to the file
+    }),
+  ],
+  ...
+}
+
+```
+
+### Build the project
+
+`$ npm run build`
+
+At this point a `build` folder should appear in the root of the project directory containing `index.html` and `bundle.js` (includes js and css features) and this `build` folder can be deployed to any static website hosting service and the React project should work with all its features and styles.

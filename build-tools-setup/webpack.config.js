@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -26,6 +27,12 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build'),
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true, // tells the plugin to inject the index.html to `build` folder
+      template: 'public/index.html', // path to the file
+    }),
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'), // where the static files are
