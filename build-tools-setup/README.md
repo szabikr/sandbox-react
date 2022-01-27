@@ -1,6 +1,6 @@
 # build-tools-setup
 
-## Initial project setup
+### Initial project setup
 
 Let's start by excluding `node_modules` and `build` folders from the git repo:
 
@@ -39,7 +39,7 @@ build
 
 ```
 
-## React and React-DOM setup
+### React and React-DOM setup
 
 `$ npm install react react-dom`
 
@@ -83,7 +83,7 @@ Add `dev` script to `package.json`
 }
 ```
 
-## Install webpack dependencies
+### Install and configure webpack
 
 `$ npm install --save-dev webpack webpack-cli webpack-dev-server`
 
@@ -112,7 +112,7 @@ module.exports = {
 };
 ```
 
-## Install babel dependencies
+### Install babel dependencies
 
 `$ npm install --save-dev @babel/core @babel/preset-react babel-loader`
 
@@ -126,7 +126,7 @@ module.exports = {
 
 ```
 
-## Configure babel in webpack.config
+### Configure babel in webpack.config
 
 Extend `webpack.config` with the following rule
 ```
@@ -146,11 +146,11 @@ module.exports = {
 };
 ```
 
-## Add global CSS and CSS module
+### Add global CSS and CSS module
 
 `$ mkdir src/styles`
 
-### global.css
+#### global.css
 
 `$ touch src/styles/global.css`
 ```
@@ -173,7 +173,7 @@ import '.styles/global.css'
 
 ```
 
-### app.module.css
+#### app.module.css
 
 `$ touch src/styles/app.module.css`
 ```
@@ -213,7 +213,7 @@ export default function App() {
 
 ```
 
-### Install and configure CSS loaders
+#### Install and configure CSS loaders
 
 `$ npm install --save-dev style-loader css-loader`
 
