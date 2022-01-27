@@ -8,6 +8,7 @@ Let's start by excluding `node_modules` and `build` folders from the git repo:
 ```
 node_modules
 build
+
 ```
 
 `$ npm init`
@@ -81,6 +82,7 @@ Add `dev` script to `package.json`
   },
   ...
 }
+
 ```
 
 ### Install and configure webpack
@@ -110,6 +112,7 @@ module.exports = {
     open: true, // open browser window when dev server starts
   },
 };
+
 ```
 
 ### Install babel dependencies
@@ -144,6 +147,7 @@ module.exports = {
   },
   ...
 };
+
 ```
 
 ### Add global CSS and CSS module
@@ -235,4 +239,5 @@ module.exports = {
     ],
   },
 };
+
 ```
