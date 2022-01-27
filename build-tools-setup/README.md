@@ -213,7 +213,7 @@ export default function App() {
 
 ```
 
-#### Install and configure CSS loaders
+### Install and configure CSS loaders
 
 `$ npm install --save-dev style-loader css-loader`
 
