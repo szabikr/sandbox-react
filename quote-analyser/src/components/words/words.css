@@ -1,0 +1,27 @@
+.words-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.word-button {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.word-button-wrapper {
+  width: 33%;
+  flex-grow: 1;
+  padding-bottom: 2rem;
+}
+
+button.App-link:hover {
+  color: #d1f5fe;
+}
+
+.selected-word {
+  color: #d1f5fe;
+}
