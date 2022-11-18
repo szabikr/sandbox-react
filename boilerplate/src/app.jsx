@@ -5,7 +5,13 @@ export default function App() {
   return (
     <div className={styles.container}>
       <h1>React Boilerplate</h1>
-      <div className={styles.subtitle}>a <strong>szabi.space</strong> development</div>
+      <div className={styles.subtitle}>
+        a{' '}
+        <strong>
+          <a href="https://szabi.space/">szabi.space</a>
+        </strong>{' '}
+        development
+      </div>
     </div>
   )
 }

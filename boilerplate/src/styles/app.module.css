@@ -7,11 +7,15 @@
 }
 
 .subtitle {
-  color: #AAAAAA;
+  color: #aaaaaa;
   font-weight: 300;
   font-size: 1.2rem;
 }
 
 .subtitle strong {
-  color: #EEEEEE;
+  color: #eeeeee;
+}
+
+.subtitle a {
+  color: #eeeeee;
 }
