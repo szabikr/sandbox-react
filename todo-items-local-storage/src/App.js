@@ -28,14 +28,17 @@ function App() {
     const savedTodos = JSON.parse(localStorage.getItem(TODO_ITEMS_KEY))
     return savedTodos || constantTodos
   })
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     localStorage.setItem(TODO_ITEMS_KEY, JSON.stringify(todos))
   }, [todos])
 
   function handleAddTodoClick() {
+    setErrorMessage('')
     const name = todoItemInputRef.current.value
     if (name === '') {
+      setErrorMessage('Write something that you want to accomplish.')
       return
     }
     setTodos([
@@ -50,6 +53,11 @@ function App() {
   }
 
   function handleClearClick() {
+    setErrorMessage('')
+    if (!todos.find((todo) => todo.complete)) {
+      setErrorMessage('No completed todos to be cleared from the list.')
+      return
+    }
     setTodos(todos.filter((todo) => !todo.complete))
   }
 
@@ -82,15 +90,18 @@ function App() {
           </button>
         </section>
 
+        <section class="error-message">{errorMessage}</section>
+
         <section>
           {todos.map((todo) => (
             <div key={todo.id}>
               <input
+                id={`todo-item-${todo.id}`}
                 type="checkbox"
                 checked={todo.complete}
                 onChange={() => handleToggleTodoChange(todo.id)}
               />
-              <span>{todo.name}</span>
+              <label htmlFor={`todo-item-${todo.id}`}>{todo.name}</label>
             </div>
           ))}
         </section>

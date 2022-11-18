@@ -85,6 +85,10 @@ a {
   color: #746ab0;
 }
 
+.error-message {
+  color: #e83845;
+}
+
 @media only screen and (max-width: 612px) {
   h1 {
     text-align: center;
@@ -99,14 +103,17 @@ a {
 
   button {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     margin: 16px auto;
-    min-width: 178px;
+    min-width: 240px;
+    padding: 12px 12px;
   }
 
   input[type='text'] {
     display: block;
-    font-size: 16px;
+    font-size: 18px;
     margin: 16px auto;
+    padding: 12px 4px;
+    min-width: 230px;
   }
 }
