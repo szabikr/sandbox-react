@@ -50,6 +50,10 @@ The application has 3 high level states that guide the user through creating, re
 
 To implement this state machine across all the React components and to create an application level state we used a React Context as it's defined in this article: [Application State Management with React](https://kentcdodds.com/blog/application-state-management-with-react)
 
+### Order Entry Page
+
+![order entry page mock-up](assets/order-entry-page-mock-up.png)
+
 While the application is `inProgress` the user has the ability to choose from scoops and toppings that came from the server as HTTP responses. We use Mock Service Worker in order to mock these requests. This allows us developers to test the application in a way that a real user would.
 
 Implemented validation for the scoops, at least one scoops is mandatory and it has an upper and a lower limit.
