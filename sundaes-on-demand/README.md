@@ -58,11 +58,21 @@ While the application is `inProgress` the user has the ability to choose from sc
 
 Implemented validation for the scoops, at least one scoops is mandatory and it has an upper and a lower limit.
 
+### Order Summary Page
+
 ![order summary page mock-up](assets/order-summary-page.png)
 
 `review`: Before the user confirms the order they look through the summary and agree to the Terms and Conditions.
 
+### Order Confirmation Page
+
+![order confirmation page mock-up](assets/order-confirmation-page.png)
+
 `completed`: Finally, a server will respond with an order number for all orders.
+
+## Mock Service Worker
+
+![mock service worker diagram](assets/mock-service-worker-diagram.png)
 
 ## Static Code Analysis
 
