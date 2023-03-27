@@ -1,0 +1,12 @@
+{
+  "name": "hooks-from-scratch",
+  "version": "1.0.0",
+  "description": "Coding exercise: hooks from scratch",
+  "main": "hooks.js",
+  "repository": "https://github.com/szabikr/sandbox-react",
+  "author": "szabikr.dev",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.8.7"
+  }
+}
