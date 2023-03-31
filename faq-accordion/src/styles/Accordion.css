@@ -1,0 +1,29 @@
+.accordion {
+  background-color: cornflowerblue;
+  width: 640px;
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.accordion-item {
+  text-align: left;
+  background-color: aliceblue;
+  margin: 8px;
+  padding: 12px;
+}
+
+.accordion-item button {
+  border: 2px solid darkblue;
+  background-color: dodgerblue;
+  color: white;
+  margin-top: 8px;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accordion-body.hidden {
+  display: none;
+}
