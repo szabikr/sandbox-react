@@ -1,0 +1,13 @@
+section {
+  padding: 1em;
+  border-radius: 0.5em;
+  min-height: 90vh;
+}
+
+section:nth-child(odd) {
+  background-color: #dbd3d8;
+}
+
+section:nth-child(even) {
+  background-color: #d8b4a0;
+}
