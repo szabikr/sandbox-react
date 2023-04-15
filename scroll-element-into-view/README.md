@@ -11,7 +11,7 @@ $ yarn
 $ yarn dev
 ```
 
-### Useful React
+### Useful Reads
 
 - [Scroll a React component into view](https://robinvdvleuten.nl/post/scroll-a-react-component-into-view/)
 - [React API Reference - useRef](https://react.dev/reference/react/useRef)
