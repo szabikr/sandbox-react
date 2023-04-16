@@ -5,8 +5,9 @@ export default function Header({
   blogSectionRef,
   contactSectionRef,
 }) {
-  function handleMenuItemClick(e, ref) {
+  function handleMenuItemClick(e, ref, hashString) {
     e.preventDefault();
+    history.pushState({}, "", `#${hashString}`);
     ref.current.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -18,7 +19,9 @@ export default function Header({
           <li>
             <a
               href="#expertise"
-              onClick={(e) => handleMenuItemClick(e, expertiseSectionRef)}
+              onClick={(e) =>
+                handleMenuItemClick(e, expertiseSectionRef, "expertise")
+              }
             >
               Expertise
             </a>
@@ -26,7 +29,7 @@ export default function Header({
           <li>
             <a
               href="#blog"
-              onClick={(e) => handleMenuItemClick(e, blogSectionRef)}
+              onClick={(e) => handleMenuItemClick(e, blogSectionRef, "blog")}
             >
               Blog
             </a>
@@ -34,7 +37,9 @@ export default function Header({
           <li>
             <a
               href="#contact"
-              onClick={(e) => handleMenuItemClick(e, contactSectionRef)}
+              onClick={(e) =>
+                handleMenuItemClick(e, contactSectionRef, "contact")
+              }
             >
               Contact
             </a>
