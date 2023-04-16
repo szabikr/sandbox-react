@@ -6,22 +6,17 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
-  const expertiseSectionRef = useRef(null);
-  const blogSectionRef = useRef(null);
-  const contactSectionRef = useRef(null);
+  const mainRef = useRef(null);
+
+  const handleNavItemClick = (itemId) => {
+    history.pushState({}, "", `#${itemId}`);
+    mainRef.current[itemId].scrollIntoView();
+  };
 
   return (
     <>
-      <Header
-        expertiseSectionRef={expertiseSectionRef}
-        blogSectionRef={blogSectionRef}
-        contactSectionRef={contactSectionRef}
-      />
-      <Main
-        expertiseSectionRef={expertiseSectionRef}
-        blogSectionRef={blogSectionRef}
-        contactSectionRef={contactSectionRef}
-      />
+      <Header onNavItemClick={handleNavItemClick} />
+      <Main ref={mainRef} />
       <Footer />
     </>
   );

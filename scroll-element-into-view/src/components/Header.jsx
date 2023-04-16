@@ -1,14 +1,9 @@
 import "./Header.css";
 
-export default function Header({
-  expertiseSectionRef,
-  blogSectionRef,
-  contactSectionRef,
-}) {
-  function handleMenuItemClick(e, ref, hashString) {
+export default function Header({ onNavItemClick }) {
+  function handleNavItemClick(e, itemId) {
     e.preventDefault();
-    history.pushState({}, "", `#${hashString}`);
-    ref.current.scrollIntoView({ behavior: "smooth" });
+    onNavItemClick(itemId);
   }
 
   return (
@@ -19,27 +14,20 @@ export default function Header({
           <li>
             <a
               href="#expertise"
-              onClick={(e) =>
-                handleMenuItemClick(e, expertiseSectionRef, "expertise")
-              }
+              onClick={(e) => handleNavItemClick(e, "expertise")}
             >
               Expertise
             </a>
           </li>
           <li>
-            <a
-              href="#blog"
-              onClick={(e) => handleMenuItemClick(e, blogSectionRef, "blog")}
-            >
+            <a href="#blog" onClick={(e) => handleNavItemClick(e, "blog")}>
               Blog
             </a>
           </li>
           <li>
             <a
               href="#contact"
-              onClick={(e) =>
-                handleMenuItemClick(e, contactSectionRef, "contact")
-              }
+              onClick={(e) => handleNavItemClick(e, "contact")}
             >
               Contact
             </a>
