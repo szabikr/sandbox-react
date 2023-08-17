@@ -1,16 +1,8 @@
 import { useState, useEffect } from 'react'
+import Controls from './components/Controls'
+import Laps from './components/Laps'
+import { getSeconds } from './utils'
 import './App.css'
-
-function getSeconds(milis: number): string {
-  function pad(num: number): string {
-    return num.toString().padStart(2, '0')
-  }
-
-  const miliseconds = Math.floor(milis / 10) % 100
-  const minutes = Math.floor(milis / 1000 / 60)
-  const seconds = Math.floor(milis / 1000) % 60
-  return `${pad(minutes)}:${pad(seconds)}.${pad(miliseconds)}`
-}
 
 function App() {
   const [startTime, setStartTime] = useState<number | null>(null)
@@ -79,32 +71,21 @@ function App() {
   return (
     <>
       <h1>Stopwatch</h1>
-      <div className="card">
-        <p>{getSeconds(elapsedTime + recentlyElapsedTime)}</p>
-        <div>
-          {startTime ? (
-            <button onClick={() => stopTimer()} style={{ marginLeft: '0.5em' }}>
-              Stop
-            </button>
-          ) : (
-            <button onClick={() => startTimer()}>Start</button>
-          )}
-          {startTime ? (
-            <button onClick={() => lapTimer()}>Lap</button>
-          ) : (
-            <button onClick={() => resetTimer()}>Reset</button>
-          )}
-        </div>
-        <p>
-          Lap {lapTimes.length + 1}{' '}
-          {getSeconds(elapsedLapTime + recentlyElapsedLapTime)}
-        </p>
-        <ol reversed>
-          {lapTimes.map((lapTime) => (
-            <li>{getSeconds(lapTime)}</li>
-          ))}
-        </ol>
-      </div>
+      <p className="time elapsed-time">
+        {getSeconds(elapsedTime + recentlyElapsedTime)}
+      </p>
+      <Controls
+        startTime={startTime}
+        startTimer={startTimer}
+        stopTimer={stopTimer}
+        lapTimer={lapTimer}
+        resetTimer={resetTimer}
+      />
+      <Laps
+        lapTimes={lapTimes}
+        elapsedLapTime={elapsedLapTime}
+        recentlyElapsedLapTime={recentlyElapsedLapTime}
+      />
     </>
   )
 }
