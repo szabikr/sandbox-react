@@ -1,67 +1,86 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function getSeconds(milis: number): number {
-  return Math.floor(milis / 1000)
+function getSeconds(milis: number): string {
+  function pad(num: number): string {
+    return num.toString().padStart(2, '0')
+  }
+
+  const miliseconds = Math.floor(milis / 10) % 100
+  const minutes = Math.floor(milis / 1000 / 60)
+  const seconds = Math.floor(milis / 1000) % 60
+  return `${pad(minutes)}:${pad(seconds)}.${pad(miliseconds)}`
 }
 
 function App() {
   const [startTime, setStartTime] = useState<number | null>(null)
   const [recentlyElapsedTime, setRecentlyElapsedTime] = useState<number>(0)
   const [elapsedTime, setElapsedTime] = useState<number>(0)
+
+  const [startLapTime, setStartLapTime] = useState<number | null>(null)
+  const [recentlyElapsedLapTime, setRecentlyElapsedLapTime] =
+    useState<number>(0)
+  const [elapsedLapTime, setElapsedLapTime] = useState<number>(0)
+
   const [lapTimes, setLapTimes] = useState<number[]>([])
 
+  // === Global Timer ===
   useEffect(() => {
-    let intervalId: number | undefined = undefined
+    if (startTime === null) return
 
-    if (startTime === null) {
-      if (intervalId) {
-        window.clearInterval(intervalId)
-      }
-
-      return
-    }
-
-    intervalId = window.setInterval(() => {
+    const intervalId = window.setInterval(() => {
       setRecentlyElapsedTime(Date.now() - startTime)
-    }, 1000)
+    }, 10)
 
     return () => window.clearInterval(intervalId)
   }, [startTime])
 
+  // === Current Lap Timer ===
+  useEffect(() => {
+    if (startLapTime === null) return
+
+    const intervalId = window.setInterval(() => {
+      setRecentlyElapsedLapTime(Date.now() - startLapTime)
+    }, 10)
+
+    return () => window.clearInterval(intervalId)
+  }, [startLapTime])
+
   function startTimer() {
-    setStartTime(Date.now())
+    const currentTime = Date.now()
+    setStartTime(currentTime)
+    setStartLapTime(currentTime)
   }
 
   function stopTimer() {
     setElapsedTime(elapsedTime + recentlyElapsedTime)
     setRecentlyElapsedTime(0)
     setStartTime(null)
+
+    setElapsedLapTime(elapsedLapTime + recentlyElapsedLapTime)
+    setRecentlyElapsedLapTime(0)
+    setStartLapTime(null)
   }
 
   function lapTimer() {
-    const newLapTimes = [...lapTimes, elapsedTime + recentlyElapsedTime]
-    setLapTimes(newLapTimes)
+    setLapTimes([elapsedLapTime + recentlyElapsedLapTime, ...lapTimes])
+
+    setElapsedLapTime(0)
+    setRecentlyElapsedLapTime(0)
+    setStartLapTime(Date.now())
   }
 
   function resetTimer() {
     setElapsedTime(0)
+    setElapsedLapTime(0)
+    setLapTimes([])
   }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Stopwatch</h1>
       <div className="card">
+        <p>{getSeconds(elapsedTime + recentlyElapsedTime)}</p>
         <div>
           {startTime ? (
             <button onClick={() => stopTimer()} style={{ marginLeft: '0.5em' }}>
@@ -76,14 +95,16 @@ function App() {
             <button onClick={() => resetTimer()}>Reset</button>
           )}
         </div>
-        <p>Elapsed Time: {getSeconds(elapsedTime + recentlyElapsedTime)}</p>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Lap {lapTimes.length + 1}{' '}
+          {getSeconds(elapsedLapTime + recentlyElapsedLapTime)}
         </p>
+        <ol reversed>
+          {lapTimes.map((lapTime) => (
+            <li>{getSeconds(lapTime)}</li>
+          ))}
+        </ol>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
