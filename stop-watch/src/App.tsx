@@ -54,7 +54,7 @@ function App() {
   }
 
   function lapTimer() {
-    setLapTimes([elapsedLapTime + recentlyElapsedLapTime, ...lapTimes])
+    setLapTimes([...lapTimes, elapsedLapTime + recentlyElapsedLapTime])
 
     setElapsedLapTime(0)
     setRecentlyElapsedLapTime(0)
