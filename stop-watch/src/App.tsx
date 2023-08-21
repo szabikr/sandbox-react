@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
+import MainTimer from './components/MainTimer'
 import Controls from './components/Controls'
 import Laps from './components/Laps'
-import { getSeconds } from './utils'
-import './App.css'
 
 function App() {
   const [startTime, setStartTime] = useState<number | null>(null)
@@ -71,9 +70,10 @@ function App() {
   return (
     <>
       <h1>Stopwatch</h1>
-      <p className="time elapsed-time">
-        {getSeconds(elapsedTime + recentlyElapsedTime)}
-      </p>
+      <MainTimer
+        elapsedTime={elapsedTime}
+        recentlyElapsedTime={recentlyElapsedTime}
+      />
       <Controls
         startTime={startTime}
         startTimer={startTimer}
@@ -86,6 +86,9 @@ function App() {
         elapsedLapTime={elapsedLapTime}
         recentlyElapsedLapTime={recentlyElapsedLapTime}
       />
+      <footer>
+        a <a href="https://szabi.space">szabi.space</a> development
+      </footer>
     </>
   )
 }
