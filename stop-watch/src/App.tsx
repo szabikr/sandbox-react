@@ -40,6 +40,7 @@ function App() {
   function startTimer() {
     const currentTime = Date.now()
     setStartTime(currentTime)
+
     setStartLapTime(currentTime)
   }
 
