@@ -1,0 +1,26 @@
+.controls {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  max-width: 260px;
+}
+
+.controls button {
+  width: 92px;
+  height: 92px;
+  font-family: 'Space Mono', monospace;
+  border-radius: 3em;
+  border: 1px solid transparent;
+  font-size: 1em;
+  background-color: #e4e4e4;
+  color: #213547;
+  cursor: pointer;
+}
+
+.controls button.start-button {
+  color: #3d6d37;
+}
+
+.controls button.stop-button {
+  color: #dd403a;
+}
