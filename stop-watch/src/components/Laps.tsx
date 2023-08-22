@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 import { getSeconds } from '../utils'
 
 import './Laps.css'
@@ -30,6 +30,12 @@ export default function Laps({
   elapsedLapTime,
   recentlyElapsedLapTime,
 }: LapsProps) {
+  // To display the last lap on top we need to reverse the lapTimes array
+  const reversedLapTimes = useMemo(
+    () => lapTimes.map((_, index) => lapTimes[lapTimes.length - 1 - index]),
+    [lapTimes],
+  )
+
   return (
     <div className="laps">
       <p>
@@ -38,25 +44,15 @@ export default function Laps({
           {getSeconds(elapsedLapTime + recentlyElapsedLapTime)}
         </span>
       </p>
-      {lapTimes
-        // use this map method to create a reversed array for easier display
-        .map((_, index) => {
-          // this function runs on every single render which is terrible
-          // considering that the app refreshes every 10ms
-          // should useMemo hook in order to create the reversed array
-          // only when the lapTimes array changes
-          console.log('we do the reverse')
-          return lapTimes[lapTimes.length - 1 - index]
-        })
-        .map((lapTime, index) => (
-          <Fragment key={lapTime}>
-            <hr />
-            <p className={`${isBestOrWorst(lapTimes, index)}`}>
-              <span>Lap {lapTimes.length - index}.</span>
-              <span className="time">{getSeconds(lapTime)}</span>
-            </p>
-          </Fragment>
-        ))}
+      {reversedLapTimes.map((lapTime, index) => (
+        <Fragment key={lapTime}>
+          <hr />
+          <p className={`${isBestOrWorst(reversedLapTimes, index)}`}>
+            <span>Lap {lapTimes.length - index}.</span>
+            <span className="time">{getSeconds(lapTime)}</span>
+          </p>
+        </Fragment>
+      ))}
     </div>
   )
 }
