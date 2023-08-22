@@ -22,18 +22,14 @@ export default function Controls({
           <button className="stop-button" onClick={() => stopTimer()}>
             Stop
           </button>
-          <button onClick={() => lapTimer()} style={{ marginLeft: '0.5em' }}>
-            Lap
-          </button>
+          <button onClick={() => lapTimer()}>Lap</button>
         </>
       ) : (
         <>
           <button className="start-button" onClick={() => startTimer()}>
             Start
           </button>
-          <button onClick={() => resetTimer()} style={{ marginLeft: '0.5em' }}>
-            Reset
-          </button>
+          <button onClick={() => resetTimer()}>Reset</button>
         </>
       )}
     </div>
