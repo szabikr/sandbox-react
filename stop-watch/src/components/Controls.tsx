@@ -1,35 +1,35 @@
 import './Controls.css'
 
 export interface ControlsProps {
-  startTime: number | null
-  startTimer: () => void
-  stopTimer: () => void
-  lapTimer: () => void
-  resetTimer: () => void
+  isTimerRunning: boolean
+  start: () => void
+  stop: () => void
+  lap: () => void
+  reset: () => void
 }
 
 export default function Controls({
-  startTime,
-  startTimer,
-  stopTimer,
-  lapTimer,
-  resetTimer,
+  isTimerRunning,
+  start,
+  stop,
+  lap,
+  reset,
 }: ControlsProps) {
   return (
     <div className="controls">
-      {startTime ? (
+      {isTimerRunning ? (
         <>
-          <button className="stop-button" onClick={() => stopTimer()}>
+          <button className="stop-button" onClick={stop}>
             Stop
           </button>
-          <button onClick={() => lapTimer()}>Lap</button>
+          <button onClick={lap}>Lap</button>
         </>
       ) : (
         <>
-          <button className="start-button" onClick={() => startTimer()}>
+          <button className="start-button" onClick={start}>
             Start
           </button>
-          <button onClick={() => resetTimer()}>Reset</button>
+          <button onClick={reset}>Reset</button>
         </>
       )}
     </div>

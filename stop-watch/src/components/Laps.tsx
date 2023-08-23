@@ -6,7 +6,6 @@ import './Laps.css'
 export interface LapsProps {
   lapTimes: number[]
   elapsedLapTime: number
-  recentlyElapsedLapTime: number
 }
 
 function isBestOrWorst(lapTimes: number[], index: number): string {
@@ -25,11 +24,7 @@ function isBestOrWorst(lapTimes: number[], index: number): string {
   return ''
 }
 
-export default function Laps({
-  lapTimes,
-  elapsedLapTime,
-  recentlyElapsedLapTime,
-}: LapsProps) {
+export default function Laps({ lapTimes, elapsedLapTime }: LapsProps) {
   // To display the last lap on top we need to reverse the lapTimes array
   const reversedLapTimes = useMemo(
     () => lapTimes.map((_, index) => lapTimes[lapTimes.length - 1 - index]),
@@ -40,9 +35,7 @@ export default function Laps({
     <div className="laps">
       <p>
         <span>Lap {lapTimes.length + 1}.</span>
-        <span className="time">
-          {getSeconds(elapsedLapTime + recentlyElapsedLapTime)}
-        </span>
+        <span className="time">{getSeconds(elapsedLapTime)}</span>
       </p>
       {reversedLapTimes.map((lapTime, index) => (
         <Fragment key={lapTime}>

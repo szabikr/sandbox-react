@@ -5,7 +5,7 @@ export interface Timer {
   start: (currentTime: number) => void
   stop: () => void
   reset: () => void
-  isRunning: () => boolean
+  isRunning: boolean
 }
 
 export default function useTimer(): Timer {
@@ -38,15 +38,11 @@ export default function useTimer(): Timer {
     setElapsedTime(0)
   }
 
-  function isRunning() {
-    return startTime !== null
-  }
-
   return {
     elapsedTime: recentlyElapsedTime + elapsedTime,
     start,
     stop,
     reset,
-    isRunning,
+    isRunning: startTime !== null,
   }
 }
