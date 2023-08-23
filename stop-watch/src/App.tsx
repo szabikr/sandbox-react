@@ -20,7 +20,6 @@ export default function AppUseTimer() {
   function stop() {
     mainTimer.stop()
     lapTimer.stop()
-    setLapTimes
   }
 
   function reset() {
