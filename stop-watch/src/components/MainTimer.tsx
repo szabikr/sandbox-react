@@ -1,5 +1,5 @@
 import { getSeconds } from '../utils'
-import './MainTimer.css'
+import '../styles/MainTimer.css'
 
 export interface MainTimerProps {
   elapsedTime: number

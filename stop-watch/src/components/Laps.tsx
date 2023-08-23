@@ -1,7 +1,7 @@
 import { Fragment, useMemo } from 'react'
 import { getSeconds } from '../utils'
 
-import './Laps.css'
+import '../styles/Laps.css'
 
 export interface LapsProps {
   lapTimes: number[]

@@ -1,4 +1,4 @@
-import './Controls.css'
+import '../styles/Controls.css'
 
 export interface ControlsProps {
   isTimerRunning: boolean
