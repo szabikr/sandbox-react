@@ -36,16 +36,20 @@ export default function AppUseTimer() {
 
   return (
     <>
-      <h1>Stopwatch</h1>
-      <MainTimer elapsedTime={mainTimer.elapsedTime} />
-      <Controls
-        isTimerRunning={mainTimer.isRunning}
-        start={start}
-        stop={stop}
-        reset={reset}
-        lap={lap}
-      />
-      <Laps lapTimes={lapTimes} elapsedLapTime={lapTimer.elapsedTime} />
+      <header>
+        <h1>Stopwatch</h1>
+      </header>
+      <main>
+        <MainTimer elapsedTime={mainTimer.elapsedTime} />
+        <Controls
+          isTimerRunning={mainTimer.isRunning}
+          start={start}
+          stop={stop}
+          reset={reset}
+          lap={lap}
+        />
+        <Laps lapTimes={lapTimes} elapsedLapTime={lapTimer.elapsedTime} />
+      </main>
       <footer>
         a <a href="https://szabi.space">szabi.space</a> development
       </footer>
