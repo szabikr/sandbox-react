@@ -38,8 +38,9 @@ main {
 }
 
 header {
-  background-color: var(--misty-rose);
+  background-color: var(--eggshell);
   padding: 1em 1.5em;
+  border-bottom: solid 3px var(--misty-rose);
 }
 
 footer {
