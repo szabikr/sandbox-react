@@ -16,4 +16,8 @@ h2 * + * {
   margin-left: 1em;
 }
 
+main {
+  text-align: center;
+}
+
 /* Footer */
