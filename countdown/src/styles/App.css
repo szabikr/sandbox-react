@@ -1,0 +1,27 @@
+/* Header */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+}
+
+nav ul li + li {
+  margin-left: 1em;
+}
+
+nav button.active {
+  background-color: var(--misty-rose);
+}
+
+/* Main */
+h2 * + * {
+  margin-left: 1em;
+}
+
+main {
+  text-align: center;
+}
+
+/* Footer */
