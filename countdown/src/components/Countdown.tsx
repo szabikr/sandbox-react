@@ -1,15 +1,15 @@
 import { useRemaining } from '../hooks'
 
-export interface MainProps {
+export interface CountdownProps {
   eventName: string
   eventDate: Date
 }
 
-export default function Main({ eventName, eventDate }: MainProps) {
+export default function Countdown({ eventName, eventDate }: CountdownProps) {
   const remaining = useRemaining(eventDate)
 
   return (
-    <main>
+    <section>
       <h1>{eventName}</h1>
       <h2>
         <span>{remaining.days} days</span>
@@ -21,6 +21,6 @@ export default function Main({ eventName, eventDate }: MainProps) {
         <span>{remaining.seconds} seconds</span>
       </h2>
       <p>until {eventDate.toDateString()}</p>
-    </main>
+    </section>
   )
 }

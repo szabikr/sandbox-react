@@ -7,8 +7,12 @@ nav ul {
   display: flex;
 }
 
-nav ul li:last-child {
-  margin-left: auto;
+nav ul li + li {
+  margin-left: 1em;
+}
+
+nav button.active {
+  background-color: var(--misty-rose);
 }
 
 /* Main */

@@ -8,7 +8,7 @@
   --black: #010400;
   --grey: #5e6472;
   --misty-rose: #ffdad6;
-  --urania-blue: #a9d8ef;
+  --uranian-blue: #a9d8ef;
 
   color-scheme: light dark;
   color: var(--grey);
@@ -46,7 +46,7 @@ header {
 footer {
   padding: 1rem 2rem;
   font-size: 0.9rem;
-  background-color: var(--urania-blue);
+  background-color: var(--uranian-blue);
   text-align: center;
 }
 
@@ -71,14 +71,10 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--eggshell);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border-color: var(--grey);
 }
